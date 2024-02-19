@@ -522,3 +522,7 @@ C:\Projects\Quizzler\BasicApplication\BasicApplication\obj\Debug\net8.0\refint\Q
 C:\Projects\Quizzler\BasicApplication\BasicApplication\obj\Debug\net8.0\Quizzler.pdb
 C:\Projects\Quizzler\BasicApplication\BasicApplication\obj\Debug\net8.0\Quizzler.genruntimeconfig.cache
 C:\Projects\Quizzler\BasicApplication\BasicApplication\obj\Debug\net8.0\ref\Quizzler.dll
+C:\Projects\Quizzler\BasicApplication\BasicApplication\obj\Debug\net8.0\Quizzler.sourcelink.json
+C:\Projects\Quizzler\BasicApplication\BasicApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.AzureAD.UI.dll
+C:\Projects\Quizzler\BasicApplication\BasicApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Projects\Quizzler\BasicApplication\BasicApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll

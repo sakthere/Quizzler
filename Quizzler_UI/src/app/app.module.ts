@@ -1,18 +1,73 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { QuestionComponentComponent } from './question-component/question-component.component';
+import { LandingComponent } from './landing-page/landing-page.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { MsalModule, MsalInterceptor, MsalGuard, MsalRedirectComponent } from '@azure/msal-angular';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MsalUserService } from '../services/msal-user.service';
+import { environment } from 'src/environments/environment';
+import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
+
+export const protectedResourceMap: any = [
+  [environment.baseUrl, environment.scopeUri],
+];
+
+const isIE =
+  window.navigator.userAgent.indexOf('MSIE ') > -1 ||
+  window.navigator.userAgent.indexOf('Trident/') > -1;
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QuestionComponentComponent,
+    LandingComponent,
+    FooterComponent,
+    HeaderComponent,
+    NavbarComponent,
+    LoginComponent,
   ],
   imports: [
+    MsalModule.forRoot(
+      new PublicClientApplication({
+        auth: {
+          clientId: environment.uiClienId,
+          authority:
+            'https://login.microsoftonline.com/' + environment.tenantId,
+          redirectUri: environment.redirectUrl,
+        },
+        cache: { cacheLocation: 'localStorage', storeAuthStateInCookie: isIE },
+      }),
+      {
+        interactionType: InteractionType.Redirect,
+        authRequest: { scopes: ['user.read'] },
+      },
+      {
+        interactionType: InteractionType.Redirect,
+        protectedResourceMap: new Map([
+          ['https://graph.microsoft.com/v1.0/me', ['User.Read']],
+        ]),
+      }
+    ),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true,
+    },
+    MsalGuard,
+  ],
+  bootstrap: [AppComponent, MsalRedirectComponent],
 })
-export class AppModule { }
+export class AppModule {}

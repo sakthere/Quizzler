@@ -1,0 +1,18 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Quiz Id</th>
+                <th>Question</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let obj of Questions">
+                <td>{{ obj.quiz_Id }}</td>
+                <td>{{ obj.questionText }}</td>
+                <td>{{ obj.createAt }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

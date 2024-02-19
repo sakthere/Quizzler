@@ -25,7 +25,9 @@ namespace Quizzler.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Question>>> GetQuestions()
         {
-            return await _context.Questions.ToListAsync();
+            var val = await _context.Questions.ToListAsync();
+            
+            return val;
         }
 
         // GET: api/Questions/5

@@ -1,0 +1,45 @@
+<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 ">
+    <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+            <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+                (click)="onHomeClick()">Quizzler</a><button
+                class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                type="button" (click)="toggleNavbar()">
+                <i class="text-white fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none"
+            [ngClass]="{'hidden': !showMenu, 'block': showMenu}">
+            <ul class="flex flex-col lg:flex-row list-none mr-auto">
+
+            </ul>
+            <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+                <li class="flex items-center">
+                    <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                        href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-facebook text-lg leading-lg"
+                            *ngIf="showLogin"></i><span class="lg:hidden inline-block ml-2">Share</span></a>
+                </li>
+                <li class="flex items-center">
+                    <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                        href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg "
+                            *ngIf="showLogin"></i><span class="lg:hidden inline-block ml-2">Tweet</span></a>
+                </li>
+                <li class="flex items-center">
+                    <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                        href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg "
+                            *ngIf="showLogin"></i><span class="lg:hidden inline-block ml-2">Star</span></a>
+                </li>
+                <li class="flex items-center">
+                    <button
+                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
+                        *ngIf="showLogin">
+                        <i class="relative px-6 py-3.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                            (click)="onSubmit()" value="Next">
+                            Login
+                        </i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
