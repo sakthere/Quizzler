@@ -1,0 +1,25 @@
+<main>
+    <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 120vh;">
+        <div class="absolute top-0 w-full h-full bg-center bg-cover"
+            style='background-image: url("../../assets/home-wallpaper.jpg");'>
+            <span id="blackOverlay" class="w-full h-full absolute opacity-55 bg-black"></span>
+        </div>
+        <div class="container relative mx-auto">
+            <div class="items-center flex flex-wrap">
+                <div class="w-full h-10 lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                    <div class="pr-12">
+                        <h1 class="text-white font-semibold text-5xl" style="margin-top: -120px;">
+                            Choose a Quiz
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="h-72 grid grid-cols-4 content-center mt-36" style="margin-left: 100px;">
+                <app-quiz-card *ngFor="let quizz of QuizzesSliced" [title]="quizz.title"
+                    [image]="quizz.image" [quizId]="quizz.id"></app-quiz-card>
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

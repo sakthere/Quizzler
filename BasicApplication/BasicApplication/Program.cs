@@ -2,6 +2,7 @@ using Quizzler.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.AzureAD.UI;
 using Microsoft.AspNetCore.Authentication;
+using NuGet.ContentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 

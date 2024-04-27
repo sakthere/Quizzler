@@ -10,11 +10,20 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
-import { MsalModule, MsalInterceptor, MsalGuard, MsalRedirectComponent } from '@azure/msal-angular';
+import {
+  MsalModule,
+  MsalInterceptor,
+  MsalGuard,
+  MsalRedirectComponent,
+} from '@azure/msal-angular';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MsalUserService } from '../services/msal-user.service';
 import { environment } from 'src/environments/environment';
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
+import { AuthService } from 'src/services/auth.service';
+import { HomeComponent } from './home/home.component';
+import { QuizzesComponent } from './quizzes/quizzes.component';
+import { QuizCardComponent } from './quiz-card/quiz-card.component';
+import { QuizzScreenComponent } from './quizz-screen/quizz-screen.component';
 
 export const protectedResourceMap: any = [
   [environment.baseUrl, environment.scopeUri],
@@ -33,6 +42,10 @@ const isIE =
     HeaderComponent,
     NavbarComponent,
     LoginComponent,
+    HomeComponent,
+    QuizzesComponent,
+    QuizCardComponent,
+    QuizzScreenComponent,
   ],
   imports: [
     MsalModule.forRoot(
@@ -67,6 +80,7 @@ const isIE =
       multi: true,
     },
     MsalGuard,
+    AuthService,
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })

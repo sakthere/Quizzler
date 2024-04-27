@@ -38,6 +38,9 @@ namespace Quizzler.Models
 
         [Required]
         public int Difficulty { get; set; }
+
+        [Column(TypeName = "NVARCHAR(MAX)")]
+        public string image { get; set; }
         public ICollection<QuizQuestion> QuizQuestions { get; set; }
 
     }

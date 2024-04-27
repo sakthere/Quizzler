@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,19 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   showMenu = false;
   showLogin: boolean = true;
+  showLogout: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authenticationService: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authenticationService.isUserLoggedIn.subscribe((x) => {
+      this.showLogin = !x;
+      this.showLogout = x;
+    });
+  }
   toggleNavbar() {
     this.showMenu = !this.showMenu;
   }
@@ -21,8 +31,14 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  signOut() {
+    sessionStorage.removeItem('loggedInUser');
+    this.authenticationService.signOut();
+    this.showLogout = false;
+    this.showLogin = true;
+  }
+
   onHomeClick() {
-    this.showLogin = false;
     this.router.navigateByUrl('');
   }
 }

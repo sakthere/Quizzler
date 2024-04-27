@@ -11,4 +11,5 @@ export class QuestionServiceService {
   getAllQuestions(): Observable<any> {
     return this.http.get<any>('https://localhost:44302/api/Questions');
   }
+
 }

@@ -11,7 +11,7 @@ using Quizzler.Models;
 
 namespace Quizzler.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class QuizsController : ControllerBase
@@ -27,7 +27,14 @@ namespace Quizzler.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Quiz>>> GetQuizzes()
         {
-            return await _context.Quizzes.ToListAsync();
+            try
+            {
+                return await _context.Quizzes.ToListAsync();
+            }
+            catch(Exception e)
+            {   
+                return null;
+            }
         }
 
         // GET: api/Quizs/5
