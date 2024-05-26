@@ -43,7 +43,19 @@ namespace Quizzler.Controllers
 
             return question;
         }
+        [HttpGet()]
+        [Route("quizID/{quizId}")]
+        public async Task<ActionResult<IEnumerable<Question>>> GetQuestionByQuizId(int quizId)
+        {
+            var question = await _context.Questions.Where(entry => entry.Quiz_Id == quizId).ToListAsync();
 
+            if (question == null)
+            {
+                return NotFound();
+            }
+
+            return question;
+        }
         // PUT: api/Questions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

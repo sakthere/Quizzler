@@ -1,0 +1,44 @@
+<main>
+    <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 90vh;">
+        <div class="absolute top-0 w-full h-full bg-center bg-cover mt-50"
+            style='background-image: url("../../assets/admin_background.jpg");'>
+            <span id="blackOverlay" class="w-full h-full absolute opacity-55 bg-black"></span>
+        </div>
+
+        <div class="container relative mx-auto w-1/2">
+            <div>
+                <form class="max-w-sm mx-auto p-20 backdrop-blur-md backdrop-brightness-150 border border-gray-400 rounded-lg">
+                    <div class="mb-5">
+                        <label for="quiz-name" class="block mb-2 text-sm font-medium text-white dark:text-white">Quiz Title</label>
+                        <input type="text" name="quiz-name" [(ngModel)]="quizName" 
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            placeholder="Enter Quiz Name Here" required />
+                    </div>
+                    <div class="mb-5">
+                        <label for="category" class="block mb-2 text-sm font-medium text-white dark:text-white">Category</label>
+                        <input type="text" name="category" [(ngModel)]="quizCategory"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            placeholder="Enter quiz Category" required />
+                    </div>
+                    <div class="mb-5">
+                        <label for="description" class="block mb-2 text-sm font-medium text-white dark:text-white">Description</label>
+                        <input type="text" name="description" [(ngModel)]="quizDescription"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            placeholder="Enter Quiz Description" required />
+                    </div>
+                    <div class="mb-5">
+                        <label for="image-link" class="block mb-2 text-sm font-medium text-white dark:text-white">Image link</label>
+                        <input type="text" name="image-link" [(ngModel)]="quizImageLink"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            placeholder="Enter Quiz Image Link" required />
+                    </div>
+                    
+                    <button type="submit"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-14" (click)="createQuiz()">Create Quiz</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

@@ -28,6 +28,20 @@ namespace Quizzler.Controllers
             return await _context.Answers.ToListAsync();
         }
 
+        [HttpGet()]
+        [Route("quizID/{quizId}")]
+        public async Task<ActionResult<IEnumerable<Answer>>> GetAnswersByQuizId(int quizId)
+        {
+            var answer = await _context.Answers.Where(entry => entry.QuizId == quizId).ToListAsync();
+
+            if (answer == null)
+            {
+                return NotFound();
+            }
+
+            return answer;
+        }
+
         // GET: api/Answers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Answer>> GetAnswer(int id)

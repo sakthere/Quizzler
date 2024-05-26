@@ -1,0 +1,56 @@
+<main>
+    <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 90vh;">
+        <div class="absolute top-0 w-full h-full bg-center bg-cover mt-50"
+            style='background-image: url("../../assets/admin_background.jpg");'>
+            <span id="blackOverlay" class="w-full h-full absolute opacity-55 bg-black"></span>
+        </div>
+        <div class="container relative mx-auto">
+          <div class="grid grid-cols-2 ml-48">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a (click)="navigateToCreateQuiz()">
+                <img class="rounded-t-lg" src="https://r4.wallpaperflare.com/wallpaper/108/140/869/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-d8b62d28c0f06c48d03c114ec8f2b4aa.jpg" alt="" />
+            </a>
+            <div class="p-5">
+                <a (click)="navigateToCreateQuiz()">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Create a Quiz</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Create your own quiz</p>
+                <a (click)="navigateToCreateQuiz()"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Enter
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a (click)="navigateToEditQuiz()">
+                <img class="rounded-t-lg" src="https://r4.wallpaperflare.com/wallpaper/184/515/626/digital-digital-art-artwork-illustration-drawing-hd-wallpaper-98166df8f0901cc8c09ce13e08c2c4ca.jpg" alt="" />
+            </a>
+            <div class="p-5">
+                <a (click)="navigateToEditQuiz()">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Edit a Quiz</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Edit the Quizzes we already have</p>
+                <a (click)="navigateToEditQuiz()"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Enter
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        </div>
+        
+
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

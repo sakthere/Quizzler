@@ -1,55 +1,66 @@
-<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 ">
-    <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                (click)="onHomeClick()">Quizzler</a><button
-                class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-                type="button" (click)="toggleNavbar()">
-                <i class="text-white fas fa-bars"></i>
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a (click)="onHomeClick()" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="../../assets/quizzler.png" class="h-8" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Quizzler</span>
+        </a>
+
+        <div *ngIf="showLogin" class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse" style="margin-left: 1000px;">
+            <button type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" (click)="onSubmit()" value="Next">Login</button>
+            <button data-collapse-toggle="navbar-cta" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-cta" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
             </button>
         </div>
-        <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none"
-            [ngClass]="{'hidden': !showMenu, 'block': showMenu}">
-            <ul class="flex flex-col lg:flex-row list-none mr-auto">
 
-            </ul>
-            <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-                <li class="flex items-center">
-                    <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                        href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-facebook text-lg leading-lg"
-                            *ngIf="showLogin"></i><span class="lg:hidden inline-block ml-2">Share</span></a>
-                </li>
-                <li class="flex items-center">
-                    <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                        href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg "
-                            *ngIf="showLogin"></i><span class="lg:hidden inline-block ml-2">Tweet</span></a>
-                </li>
-                <li class="flex items-center">
-                    <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                        href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg "
-                            *ngIf="showLogin"></i><span class="lg:hidden inline-block ml-2">Star</span></a>
-                </li>
-                <li class="flex items-center">
-                    <button
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
-                        *ngIf="showLogin">
-                        <i class="relative px-6 py-3.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-                            (click)="onSubmit()" value="Next">
-                            Login
-                        </i>
-                    </button>
-                </li>
-                <li class="flex items-center">
-                    <button
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
-                        *ngIf="showLogout">
-                        <i class="relative px-6 py-3.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-                            (click)="signOut()" value="Next">
-                            Logout
-                        </i>
-                    </button>
-                </li>
-            </ul>
+
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button type="button"
+                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+                data-dropdown-placement="bottom">
+                <span class="sr-only">Open user menu</span>
+                <img *ngIf="showLogout" class="w-8 h-8 rounded-full" src="{{picture}}" alt="user photo">
+            </button>
+            <!-- Dropdown menu -->
+            <div [hidden]="!showLogout" class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                id="user-dropdown">
+                <div class="px-4 py-3">
+                    <span *ngIf="showLogout" class="block text-sm text-gray-900 dark:text-white">{{name}}</span>
+                    <span *ngIf="showLogout" class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{email}}</span>
+                </div>
+                <ul class="py-2" aria-labelledby="user-menu-button">
+                    <li>
+                        <a *ngIf="showLogout" href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                    </li>
+                    
+                    <li>
+                        <a *ngIf="showLogout" (click)="signOut()"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                            out</a>
+                    </li>
+                </ul>
+            </div>
+            <button data-collapse-toggle="navbar-user" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-user" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
         </div>
+
+        
+        
     </div>
 </nav>

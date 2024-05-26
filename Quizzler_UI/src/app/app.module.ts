@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MsalModule,
   MsalInterceptor,
@@ -24,6 +26,14 @@ import { HomeComponent } from './home/home.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { QuizCardComponent } from './quiz-card/quiz-card.component';
 import { QuizzScreenComponent } from './quizz-screen/quizz-screen.component';
+import { DialogModule } from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {AvatarModule} from 'primeng/avatar';
+import { CardModule } from 'primeng/card';
+import {ProgressBarModule} from 'primeng/progressbar';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 
 export const protectedResourceMap: any = [
   [environment.baseUrl, environment.scopeUri],
@@ -46,6 +56,9 @@ const isIE =
     QuizzesComponent,
     QuizCardComponent,
     QuizzScreenComponent,
+    AdminHomeComponent,
+    CreateQuizComponent,
+    EditQuizComponent,
   ],
   imports: [
     MsalModule.forRoot(
@@ -72,6 +85,13 @@ const isIE =
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    DialogModule,
+    AvatarModule,
+    ButtonModule,
+    BrowserAnimationsModule,
+    CardModule,
+    ProgressBarModule
   ],
   providers: [
     {

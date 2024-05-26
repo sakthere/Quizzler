@@ -1,40 +1,144 @@
-<div class="flex items-center h-screen w-full justify-center">
+<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-96 my-28"
+    style="height: 520px;" *ngIf="questions.length > 0">
+    <a href="#">
+        <img class="p-8 rounded-t-lg h-72 w-56 ml-20" [src]="questions[currentIndex].image_URL" alt="product image" />
+    </a>
+    <div class="px-5 pb-5">
+        <a>
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                [innerHTML]="questions[currentIndex].questionText"></h5>
+        </a>
 
-    <div class="max-w-xs">
-        <div class="bg-white shadow-xl rounded-lg py-3">
-            <div class="photo-wrapper p-2">
-                <img class="w-32 h-32 rounded-full mx-auto" src="{{userProfile}}" alt="John Doe">
-            </div>
-            <div class="p-2">
-                <h3 class="text-center text-xl text-gray-900 font-medium leading-8">{{name}}</h3>
-                <div class="text-center text-gray-400 text-xs font-semibold">
-                    <p>Web Developer</p>
-                </div>
-                <table class="text-xs my-3">
-                    <tbody>
-                        <tr>
-                            <td class="px-2 py-2 text-gray-500 font-semibold">Address</td>
-                            <td class="px-2 py-2">Chatakpur-3, Dhangadhi Kailali</td>
-                        </tr>
-                        <tr>
-                            <td class="px-2 py-2 text-gray-500 font-semibold">Phone</td>
-                            <td class="px-2 py-2">+977 9955221114</td>
-                        </tr>
-                        <tr>
-                            <td class="px-2 py-2 text-gray-500 font-semibold">Email</td>
-                            <td class="px-2 py-2">{{email}}</td>
-                        </tr>
-                    </tbody>
-                </table>
 
-                <div class="text-center my-3">
-                    <a class="text-xs cursor-pointer text-indigo-500 italic hover:underline
-                        hover:text-indigo-600 font-medium" (click)="signOut()">Sign
-                        Out</a>
-                </div>
-
-            </div>
-        </div>
     </div>
 
+    <div class="relative flex flex-col text-[#eef2ff] bg-gray-800 shadow-md rounded-xl bg-clip-border"
+        *ngIf="answers.length > 0">
+        <nav class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
+            <div role="button"
+                class="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-200 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-200 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-200">
+                <label htmlFor="vertical-list-answer-1" class="flex items-center w-full px-3 py-2 cursor-pointer">
+                    <div class="grid mr-3 place-items-center">
+                        <div class="inline-flex items-center">
+                            <label class="relative flex items-center p-0 rounded-full cursor-pointer"
+                                htmlFor="vertical-list-answer-1">
+                                <input name="vertical-list" id="vertical-list-answer-1" type="radio" [(ngModel)]="value"
+                                    [value]="answers[currentAnswerIndex]"
+                                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-200 checked:before:bg-gray-200 hover:before:opacity-0" />
+                                <span
+                                    class="absolute text-gray-200 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 16 16"
+                                        fill="currentColor">
+                                        <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-400"
+                        [innerHTML]="answers[currentAnswerIndex].answerText">
+                    </p>
+                </label>
+            </div>
+            <div role="button"
+                class="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-200 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-200 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-200">
+                <label htmlFor="vertical-list-answer-2" class="flex items-center w-full px-3 py-2 cursor-pointer">
+                    <div class="grid mr-3 place-items-center">
+                        <div class="inline-flex items-center">
+                            <label class="relative flex items-center p-0 rounded-full cursor-pointer"
+                                htmlFor="vertical-list-answer-2">
+                                <input [(ngModel)]="value" [value]="answers[currentAnswerIndex+1]" name="vertical-list"
+                                    id="vertical-list-answer-2" type="radio"
+                                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-200 checked:before:bg-gray-200 hover:before:opacity-0" />
+                                <span
+                                    class="absolute text-gray-200 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 16 16"
+                                        fill="currentColor">
+                                        <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-400"
+                        [innerHTML]="answers[currentAnswerIndex+1].answerText">
+                    </p>
+                </label>
+            </div>
+            <div role="button"
+                class="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-200 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-200 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-200">
+                <label htmlFor="vertical-list-answer-3" class="flex items-center w-full px-3 py-2 cursor-pointer">
+                    <div class="grid mr-3 place-items-center">
+                        <div class="inline-flex items-center">
+                            <label class="relative flex items-center p-0 rounded-full cursor-pointer"
+                                htmlFor="vertical-list-answer-3">
+                                <input [(ngModel)]="value" [value]="answers[currentAnswerIndex+2]" name="vertical-list"
+                                    id="vertical-list-answer-3" type="radio"
+                                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-200 checked:before:bg-gray-200 hover:before:opacity-0" />
+                                <span
+                                    class="absolute text-gray-200 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 16 16"
+                                        fill="currentColor">
+                                        <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-400"
+                        [innerHTML]="answers[currentAnswerIndex+2].answerText">
+                    </p>
+                </label>
+            </div>
+            <div role="button"
+                class="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-200 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-200 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-200">
+                <label htmlFor="vertical-list-answer-4" class="flex items-center w-full px-3 py-2 cursor-pointer">
+                    <div class="grid mr-3 place-items-center">
+                        <div class="inline-flex items-center">
+                            <label class="relative flex items-center p-0 rounded-full cursor-pointer"
+                                htmlFor="vertical-list-answer-4">
+                                <input [(ngModel)]="value" [value]="answers[currentAnswerIndex+3]" name="vertical-list"
+                                    id="vertical-list-answer-4" type="radio"
+                                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-200 checked:before:bg-gray-200 hover:before:opacity-0" />
+                                <span
+                                    class="absolute text-gray-200 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 16 16"
+                                        fill="currentColor">
+                                        <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-400"
+                        [innerHTML]="answers[currentAnswerIndex+3].answerText">
+                    </p>
+                </label>
+            </div>
+            <button type="button"
+                class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-1/3 ml-28"
+                *ngIf="currentIndex != 9" (click)="changeItem();changeAnswer();saveScore()">Go to Next
+            </button>
+
+            <p-button *ngIf="currentIndex == 9" (click)="DisplayModal()" icon="pi pi-external-link" label="Show"></p-button>
+            <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }"
+                [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+                <p-card header="Hurrey!" subheader="Quiz Completed"
+                    [style]="{ 'margin-left': '200px', 'width': '360px'}">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" src="https://images.unsplash.com/photo-1499306215218-42e51ae058b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                    </ng-template>
+                    <div>
+                        <p>You have guessed {{score}} out of the {{questions.length}} questions.</p>
+                        <br />
+                        <p style="font-size: 12px;">Click the below button to go to the quiz page.</p>
+                    </div>
+                    <ng-template pTemplate="footer">
+                       <p-button label="Go To Quizzes" icon="pi pi-times" styleClass="p-button-secondary" (click)="goToQuiz()"
+                            [style]="{ 'margin-left': '.5em' }"></p-button>
+                    </ng-template>
+                </p-card>
+            </p-dialog>
+        </nav>
+    </div>
 </div>

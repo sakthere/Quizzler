@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   username: string = '';
   password: string = '';
   isUserLoggedIn: boolean = false;
+  isChecked: boolean = false;
   private readonly _destroy = new Subject<void>();
+  email: string = '';
 
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
@@ -50,46 +52,26 @@ export class LoginComponent implements OnInit, OnDestroy {
       shape: 'rectangle',
       width: 350,
     });
-
-    this.msalBroadCastService.inProgress$
-      .pipe(
-        filter(
-          (interactionStatus: InteractionStatus) =>
-            interactionStatus == InteractionStatus.None
-        ),
-        takeUntil(this._destroy)
-      )
-      .subscribe((x) => {
-        this.isUserLoggedIn =
-          this.authService.instance.getAllAccounts().length > 0;
-        this.authenticationService.isUserLoggedIn.next(this.isUserLoggedIn);
-      });
-  }
-
-  login() {
-    if (this.msalGuardConfig.authRequest) {
-      this.authService.loginRedirect;
-      ({ ...this.msalGuardConfig.authRequest }) as RedirectRequest;
-    } else {
-      this.authService.loginRedirect();
-    }
-  }
-
-  logout() {
-    this.authService.logoutRedirect({
-      postLogoutRedirectUri: environment.postLogoutUrl,
-    });
   }
 
   private decodeToken(token: string) {
     return JSON.parse(atob(token.split('.')[1]));
   }
+
+  handleCheck(ev: Event) {
+    this.isChecked = true;
+  }
+
   handleLogin(response: any) {
     if (response) {
       const payload = this.decodeToken(response.credential);
       this.authenticationService.updateDecodedResponse(payload);
       sessionStorage.setItem('loggedInUser', JSON.stringify(payload));
-      this.router.navigate(['home']);
+      this.email = JSON.parse(sessionStorage.getItem('loggedInUser')!).email;
+      if(this.email == 'tiwarisaket3@gmail.com')
+        this.router.navigate(['v2/home']);
+      else
+        this.router.navigate(['home']);
     }
   }
 }
